@@ -28,11 +28,54 @@ export const DERIVED_ATTENDANCE_STATUS = {
   NOT_ADDED: "not_added",
 };
 
+// Extended additively for the Employees module upgrade — "on_leave" is kept
+// even though it's not one of the 4 new status tabs, so existing records
+// using it don't break; probation/terminated are new.
 export const EMPLOYEE_STATUS = {
   ACTIVE: "active",
   INACTIVE: "inactive",
   ON_LEAVE: "on_leave",
+  PROBATION: "probation",
+  TERMINATED: "terminated",
 };
+
+// The 4 tabs the Employees page actually shows (§1.3) — deliberately a
+// subset of EMPLOYEE_STATUS above, not every enum value.
+export const EMPLOYEE_STATUS_TABS = [
+  { value: "", label: "All" },
+  { value: "active", label: "Active" },
+  { value: "inactive", label: "Inactive" },
+  { value: "probation", label: "Probation" },
+  { value: "terminated", label: "Terminated" },
+];
+
+export const EMPLOYEE_STATUS_OPTIONS = [
+  { value: "active", label: "Active" },
+  { value: "inactive", label: "Inactive" },
+  { value: "probation", label: "Probation" },
+  { value: "terminated", label: "Terminated" },
+  { value: "on_leave", label: "On Leave" },
+];
+
+export const GENDER_OPTIONS = [
+  { value: "male", label: "Male" },
+  { value: "female", label: "Female" },
+  { value: "other", label: "Other" },
+];
+
+export const EMPLOYMENT_TYPE_OPTIONS = [
+  { value: "full_time", label: "Full-time" },
+  { value: "part_time", label: "Part-time" },
+  { value: "contract", label: "Contract" },
+  { value: "intern", label: "Intern" },
+];
+
+// Used by the Documents tab (profile page phase) — defined now alongside
+// the rest of this module's options rather than added piecemeal later.
+export const DOCUMENT_VERIFICATION_STATUS = [
+  { value: "verified", label: "Verified" },
+  { value: "unverified", label: "Unverified" },
+];
 
 export const CALENDAR_CATEGORIES = [
   { value: "holiday", label: "Holiday" },

@@ -55,11 +55,14 @@ import WorkingDaysSettings from "./pages/settings/WorkingDaysSettings";
 import StorageSettings from "./pages/settings/StorageSettings";
 import NotFound from "./pages/NotFound";
 import DashboardLayout from "./layouts/DashboardLayout";
+import AddEmployee from "./pages/AddEmployee";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import MediaLibrary from "./pages/MediaLibrary";
 import TrainingPrograms from "./pages/TrainingPrograms";
 
 import { MANAGER_ROLES } from "./constants/roles";
+
+// ... (imports remain exactly the same)
 
 export default function App() {
   return (
@@ -78,6 +81,10 @@ export default function App() {
 
           <Route element={<ProtectedRoute roles={MANAGER_ROLES} />}>
             <Route path="/employees" element={<Employees />} />
+            {/* MOVED HERE: Sibling to /employees */}
+            <Route path="/employees/new" element={<AddEmployee />} />
+            {/* <Route path="/employees/:id" element={<EmployeeProfile />} /> */}
+            
             <Route path="/departments" element={<Departments />} />
             <Route path="/branches" element={<Branches />} />
             <Route path="/holidays" element={<Holidays />} />
@@ -119,13 +126,14 @@ export default function App() {
             <Route path="/roles" element={<Roles />} />
             <Route path="/roles/new" element={<AddRole />} />
             <Route path="/roles/:id/edit" element={<AddRole />} />
+            
             <Route path="/settings" element={<SettingsLayout />}>
-            <Route path="system" element={<SystemSettings />} />
-            <Route path="brand" element={<BrandSettings />} />
-            <Route path="email" element={<EmailSettings />} />
-            <Route path="working-days" element={<WorkingDaysSettings />} />
-            <Route path="storage" element={<StorageSettings />} />
-          </Route>
+              <Route path="system" element={<SystemSettings />} />
+              <Route path="brand" element={<BrandSettings />} />
+              <Route path="email" element={<EmailSettings />} />
+              <Route path="working-days" element={<WorkingDaysSettings />} />
+              <Route path="storage" element={<StorageSettings />} />
+            </Route>
             
           </Route>
         </Route>
